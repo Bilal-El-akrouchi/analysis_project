@@ -1,0 +1,17 @@
+/* état initial : décalé à droite et masqué */
+.fromR {
+  transform: translateX(200px);
+  opacity: 0;
+  /* on n’ajoute PAS de transition ici, pour éviter le flicker au chargement */
+}
+
+/* état activé : position normale + transition */
+.fromRActiv {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.effetdepuisladroite:hover{
+    
+}
