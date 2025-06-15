@@ -7,7 +7,7 @@ import './Nav.css';
 export default function Nav() {
     return (
         <>
-            <nav className="glassed fixed flex w-screen items-center justify-around py-2 z-5 ">
+            <nav className="glassed fixed flex w-screen items-center justify-around py-2 z-30 ">
                 <div className="flex w-1/3 justify-around items-center">
                     <img src={hamburger} alt="logo" className="hmaburger cursor-pointer" />
                     <Link href="/articcle">Articles</Link>

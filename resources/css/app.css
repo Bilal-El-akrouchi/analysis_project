@@ -68,6 +68,33 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+    
+    ::-webkit-scrollbar {
+        width: 8px; /* ou la hauteur pour scrollbar horizontale */
+        height: 8px;
+        background: #f9f2f2; /* fond blanc */
+        border: 0; /* pas de bordure */
+    }
+
+    /* piste (track) : la zone derrière la thumb */
+    ::-webkit-scrollbar-track {
+        background: #f9f2f2; /* fond blanc */
+        border: 0;
+    }
+
+    /* barre (thumb) : l’indicateur qu’on fait glisser */
+    ::-webkit-scrollbar-thumb {
+        background-color: #033365; /* bleu */
+        border-radius: 4px; /* coins arrondis si tu veux */
+        border: 0; /* pas de contour */
+    }
+
+    /* ==== Pour Firefox ==== */
+    /* scrollbars fines et couleurs */
+    html {
+        scrollbar-width: thin; /* "auto", "thin" ou "none" */
+        scrollbar-color: #033365 #f9f2f2; /* thumb puis track */
+    }
     h1 {
         font-family: 'Times New Roman', Times, serif;
         color: #033365;
@@ -174,11 +201,19 @@
         );
     }
 }
-.bg-blanc{
-    background-color:#f9f2f2 ;
+.bg-blanc {
+    background-color: #f9f2f2;
 }
-.bg-bleu{
+.bg-bleu {
     background-color: #00233a;
+}
+.text-blanc {
+    color: #f9f2f2;
+}
+.text-bleu {
+    color: #00233a;
+}
+.scrollBare {
 }
 
 .glassed {
@@ -199,8 +234,8 @@
     height: 80%;
     width: 80%;
 }
-.textureJournal{
-    background-image: url("../../public/textureJournal.svg");
+.textureJournal {
+    background-image: url('../../public/textureJournal.svg');
 }
 
 .logo {
@@ -215,7 +250,7 @@
     -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%, /* opaque dès 30% */ rgba(0, 0, 0, 1) 100%);
     mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%, /* opaque dès 30% */ rgba(0, 0, 0, 1) 100%);
 }
-.dégradéTrans{
+.dégradéTrans {
     -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%, /* opaque dès 30% */ rgba(0, 0, 0, 1) 100%);
     mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%, /* opaque dès 30% */ rgba(0, 0, 0, 1) 100%);
 }
