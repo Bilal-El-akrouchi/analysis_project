@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
@@ -13,7 +14,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+    $allarticle=Article::all();
+      return Inertia::render('article/article',['allartice'=>$allarticle] );
     }
 
     /**
@@ -21,23 +23,40 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('article/create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreArticleRequest $request)
+    public function store($request)
     {
-        //
+       $article= new Article();
+        $article->titre=$request->titre;
+        $article->soustitre=$request->soustitre;
+        $article->texte=$request->texte;
+        $article->img=$request->img;
+        $article->sources=$request->sources;
+        $article->save();
+       
+       
+       
+            //  $table->id();
+            // $table->string('titre');
+            // $table->string('sous-titre');
+            // $table->text('texte');
+            // $table->string('img');
+            // $table->text('sources');
+            // $table->timestamps();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Article $article)
+    public function show($id)
     {
-        //
+        $article=Article::find($id) ;
+        return Inertia::render("article/detaile/detaile",["article "=>$article]) ;
     }
 
     /**

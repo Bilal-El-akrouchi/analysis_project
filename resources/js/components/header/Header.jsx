@@ -45,24 +45,63 @@ export default function Header() {
                 <div className="flex w-[80%] items-start justify-start">
                     <h5>File d'actus...</h5>
                 </div>
-                <div className="flex h-[20%] w-[80%] justify-between">
-                    <div className="glassed bglassed hoverSpe effetdepuisladroite w-1/5 px-2">
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-3  w-[80vw] content-center  ">
+                    <div className=" p-5 m-auto glassed hoverSpe effetdepuisladroite h-[20vh] w-full overflow-y-clip   ">
+                        <h5>00h00</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet<span> ....</span>{' '}
+                        </p>
+                    </div>
+                    <div className=" p-5 m-auto glassed hoverSpe effetdepuisladroite h-[20vh] w-full overflow-y-clip   ">
+                        <h5>00h00</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet <span> ....</span>{' '}
+                        </p>
+                    </div>
+                    <div className=" p-5 m-auto glassed hoverSpeBlacn effetdepuisladroite h-[20vh] w-full overflow-y-clip   ">
+                        <h5>00h00</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet.<span> ....</span>{' '}
+                        </p>
+                    </div>
+                    
+                    {/* <div className="glassed hoverSpeBlacn effetdepuisladroite h-[20vh] w-1/5 overflow-visible px-2  w-[20vw]   ">
+                        <h5>00h00</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet <span> ....</span>{' '}
+                        </p>
+                    </div> */}
+                    {/* <div className="glassed hoverSpeBlacn effetdepuisladroite h-[20vh] w-1/5 overflow-visible px-2 w-[20vw]   ">
+                        <h5>00h00</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet <span> ....</span>{' '}
+                        </p>
+                    </div>
+                    <div className="glassed hoverSpeBlacn effetdepuisladroite h-[20vh] w-1/5 overflow-visible px-2 w-[20vw]   ">
+                        <h5>00h00</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet <span> ....</span>{' '}
+                        </p>
+                    </div> */}
+                </div>
+                {/* <div className="flex h-[20%] w-[80%] justify-between">
+                    <div className="glassed  overflow-y-clip  h-[20vh] hoverSpe effetdepuisladroite w-1/5 px-2">
                         <h5>00h00</h5>
                         <p>Lorem ipsum dolor sit amet<span> ....</span> </p>
                     </div>
-                    <div className="glassed bglassed hoverSpe effetdepuisladroite w-1/5 px-2">
+                    <div className="glassed  overflow-y-clip  h-[20vh] hoverSpe effetdepuisladroite w-1/5 px-2">
                         <h5>00h00</h5>
                         <p>Lorem ipsum dolor sit amet <span> ....</span> </p>
                     </div>
-                    <div className="glassed bglassed hoverSpeBlacn effetdepuisladroite w-1/5 px-2">
+                    <div className="glassed  overflow-y-clip  h-[20vh] hoverSpeBlacn effetdepuisladroite w-1/5 px-2">
                         <h5>00h00</h5>
                         <p>Lorem ipsum dolor sit amet.<span> ....</span> </p>
                     </div>
-                    <div className="glassed bglassed hoverSpeBlacn effetdepuisladroite w-1/5 px-2">
+                    <div className="glassed overflow-visible max-h-[20vh] hoverSpeBlacn effetdepuisladroite w-1/5 px-2">
                         <h5>00h00</h5>
                         <p>Lorem ipsum dolor sit amet <span> ....</span> </p>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     );

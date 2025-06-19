@@ -7,10 +7,10 @@ import './Nav.css';
 export default function Nav() {
     return (
         <>
-            <nav className="glassed fixed flex w-screen items-center justify-around py-2 z-30 ">
+            <nav className="glassed sticky flex w-full items-center justify-around py-2 z-30 ">
                 <div className="flex w-1/3 justify-around items-center">
                     <img src={hamburger} alt="logo" className="hmaburger cursor-pointer" />
-                    <Link href="/articcle">Articles</Link>
+                    <Link href="/article">Articles</Link>
                 </div>
                 <div>
                     <Link href="/">
@@ -18,9 +18,9 @@ export default function Nav() {
                     </Link>
                 </div>
                 <div className="flex w-1/3 justify-around">
-                    <input type="search" id="q" name="q" placeholder="Rechercher…"></input>
+                    <input className='w-[50%] ' type="search" id="q" name="q" placeholder="Rechercher…"></input>
 
-                    <select name="tags">
+                    <select name="tags" className='w-[50%] '>
                         <option value="null">par tag</option>
                         <option value="nationnal">nationnal</option>
                         <option value="internationnal">internationnal</option>

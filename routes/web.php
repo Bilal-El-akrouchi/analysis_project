@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -12,6 +13,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 });
-
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
+
+
+Route::get('detail/{id}',[ArticleController::class,'show'] );
+// Route::get("/article", [ArticleController::class,'index']);
+Route::get('/article', function () {
+    return Inertia::render('article/page');
+});
+Route::post('/article/post',[ArticleController::class,'store'] );
+route::get('/article/create', ArticleController::class,'create');
