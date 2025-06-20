@@ -215,7 +215,9 @@
 }
 .scrollBare {
 }
-
+button{
+    cursor: pointer;
+}
 .glassed {
     border-radius: 8px;
     backdrop-filter: blur(50px);

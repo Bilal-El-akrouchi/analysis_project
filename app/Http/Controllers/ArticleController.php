@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ArticleController extends Controller
@@ -15,7 +16,7 @@ class ArticleController extends Controller
     public function index()
     {
     $allarticle=Article::all();
-      return Inertia::render('article/article',['allartice'=>$allarticle] );
+      return Inertia::render('article/page',['allarticle'=>$allarticle] );
     }
 
     /**
@@ -29,14 +30,14 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store($request)
+    public function store(Request $request)
     {
        $article= new Article();
         $article->titre=$request->titre;
         $article->soustitre=$request->soustitre;
-        $article->texte=$request->texte;
+        $article->text=$request->text;
         $article->img=$request->img;
-        $article->sources=$request->sources;
+        $article->sources=$request->source;
         $article->save();
        
        
@@ -44,7 +45,7 @@ class ArticleController extends Controller
             //  $table->id();
             // $table->string('titre');
             // $table->string('sous-titre');
-            // $table->text('texte');
+            // $table->text('text');
             // $table->string('img');
             // $table->text('sources');
             // $table->timestamps();
@@ -62,24 +63,32 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-        //
+        $article=Article::find($id);
+        return Inertia::render('article/edit',['article'=>$article]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateArticleRequest $request, Article $article)
+    public function update(Request $request, $id)
     {
-        //
+        $article=Article::find($id);
+        $article->titre=$request->titre;
+        $article->soustitre=$request->soustitre;
+        $article->sources=$request->sources;
+        $article->text=$request->text;
+        $article->img=$request->img;
+        $article->save();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
-        //
+        $article=Article::find($id);
+        $article->delete();
     }
 }
