@@ -7,6 +7,7 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Tag;
 
 class ArticleController extends Controller
 {
@@ -15,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-    $allarticle=Article::all();
+    $allarticle=Article::with(["tags"])->get() ;
       return Inertia::render('article/page',['allarticle'=>$allarticle] );
     }
 
@@ -24,32 +25,41 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return Inertia::render('article/create');
+        $tags = Tag::select('id','nom')->get();
+
+        return Inertia::render('article/create',['tags'=>$tags] );
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-       $article= new Article();
-        $article->titre=$request->titre;
-        $article->soustitre=$request->soustitre;
-        $article->text=$request->text;
-        $article->img=$request->img;
-        $article->sources=$request->source;
-        $article->save();
-       
-       
-       
-            //  $table->id();
-            // $table->string('titre');
-            // $table->string('sous-titre');
-            // $table->text('text');
-            // $table->string('img');
-            // $table->text('sources');
-            // $table->timestamps();
-    }
+{
+    // 1) Validation
+    $data = $request->validate([
+        'titre'     => 'required|string',
+        'soustitre' => 'nullable|string',
+        'text'      => 'required|string',
+        'img'       => 'nullable|string',
+        'source'    => 'nullable|string',
+        'tag_id'    => 'required|exists:tags,id',
+    ]);
+
+    // 2) Création de l’article
+    $article = Article::create([
+        'titre'     => $data['titre'],
+        'soustitre' => $data['soustitre'],
+        'text'      => $data['text'],
+        'img'       => $data['img'],
+        'sources'   => $data['source'],
+    ]);
+
+    // 3) Liaison avec le tag sélectionné
+    $article->tags()->attach($data['tag_id']);
+
+    // 4) Retour à la liste
+    return redirect()->route('article.index');
+}
 
     /**
      * Display the specified resource.

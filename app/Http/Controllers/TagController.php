@@ -5,31 +5,38 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateTagRequest;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TagController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $alltag = Tag::all();
+
+        return Inertia::render('dashboard', [
+            'alltag' => $alltag,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return Inertia::render('tag/create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTagRequest $request)
+    public function store(Request $request)
     {
-        //
+        $tag = new tag();
+        $tag->nom = $request->nom;
+        $tag->save();
     }
 
     /**
@@ -59,8 +66,9 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
-        //
+        $tag=Tag::find($id);
+        $tag->delete();
     }
 }

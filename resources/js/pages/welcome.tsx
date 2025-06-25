@@ -3,6 +3,7 @@ import SectionUn from '../components/section1/SectionUn';
 import SectrionDeux from '../components/section2/SectrionDeux';
 import SectionTrois from '../components/section3/SectionTrois';
 import SectionQuatres from '../components/section4/SectionQuatres';
+import AuthLayout from '@/layouts/auth-layout';
 import Layout from './layout';
 
 export default function Welcome() {
@@ -15,6 +16,7 @@ export default function Welcome() {
                 <SectrionDeux />
                 <SectionQuatres />
             </main>
+
         </Layout>
     );
 }
